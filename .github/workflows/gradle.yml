@@ -57,8 +57,8 @@ jobs:
           key: ${{ secrets.KEY }}
           envs: GITHUB_SHA
           script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/qring
-            docker stop $(docker ps -a -q)
-            docker run -d --log-driver=syslog -p 19000:19001 ${{ secrets.DOCKER_USERNAME }}/qring
-            docker rm $(docker ps --filter 'status=exited' -a -q)
-            docker image prune -a -f
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/qring
+            sudo docker stop $(docker ps -a -q)
+            sudo docker run -d --log-driver=syslog -p 19000:19001 ${{ secrets.DOCKER_USERNAME }}/qring
+            sudo docker rm $(docker ps --filter 'status=exited' -a -q)
+            sudo docker image prune -a -f
